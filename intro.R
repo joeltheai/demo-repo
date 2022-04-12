@@ -1266,6 +1266,122 @@ View(iris)
 
 
 
+#install.packages("dplyr")
+
+library(dplyr)
+
+
+mydata <- data.frame(iris)
+
+mydata
+summary(mydata)
+
+str(mydata)
+
+set.seed(123)
+
+
+#sample n rows randomly from the dataframe
+mydata2 <- sample_n(mydata,3)
+
+mydata2
+
+
+#sample p percentage from entire rows
+mydata1 <- sample_frac(mydata,.01)
+
+mydata1
+
+
+#eliminate duplicate values
+rem0 <- distinct(mydata)
+rem0
+
+rem1 <- distinct(mydata, Species, .keep_all = T)
+rem1
+
+#if  keepall = falsse it returns just that column
+rem2 <- distinct(mydata, Species, .keep_all = F)
+rem2
+
+
+#displays unique pais of data
+rem3 <- distinct(mydata, Sepal.Length,Species,  .keep_all = F)
+rem3
+
+
+#select a specific column
+subcol.species <- select(mydata,Species)
+subcol.species
+
+#subset rows with column values
+#subset data with matching logical conditions
+filter.rows <- filter(mydata, Species == "virginica")
+filter.rows
+
+mydata
+
+
+filter.rows1 <- filter(mydata, Species %in% c("virginica","setosa"))
+filter.rows1
+
+
+
+mydata11<- select(mydata, -Sepal.Length,-Sepal.Width)
+mydata11
+
+mydata12<- select(mydata, starts_with("S"))
+mydata12
+
+mydata13<- select(mydata, -starts_with("S"))
+mydata13
+
+#reordering variables
+mydata14<- select(mydata, Species, everything())
+mydata14
+
+
+#rename() function
+mydata15<- rename(mydata, Category = Species)
+mydata15
+
+
+
+m1= matrix(c(1:10),5,6)
+
+
+am1 <- apply(m1, 1, mean)
+am1
+am2 <- apply(m1, 2, mean)
+am2
+
+
+
+#sapply() function take list, vector or dataframe as input
+#and gives
+
+
+
+
+
+
+movies <- c("spiderman","Batman","Vertigo", "Chinatown")
+movies.lower <- lapply(movies, tolower)
+movies.lower
+str(movies.lower)
+
+
+movies.lower2 <- unlist(lapply(movies, tolower))
+movies.lower2
+
+
+dt <-cars
+
+amn
+
+
+
+
 
 
 
